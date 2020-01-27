@@ -19,8 +19,8 @@ const defaults = {
 const generateComment = (tagName: string | undefined, filePath: string | undefined): string => {
   let comment: string = '';
 
-  if (tagName) comment += `[tag: <${tagName}>]`;
-  if (filePath) comment += `[file: "${filePath}"]`;
+  if (tagName) comment += `<${tagName}>`;
+  if (filePath) comment += `(source: "${filePath}")`;
 
   return comment;
 };

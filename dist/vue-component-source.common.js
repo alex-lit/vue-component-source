@@ -1132,30 +1132,30 @@ var kebabCase_default = /*#__PURE__*/__webpack_require__.n(kebabCase);
 
 
 /**
- * Дефолтные параметры плагина
+ * Default plugin parameters
  */
 var defaults = {
     /**
-     * Плагин включен?
+     * Is the plugin included?
      */
     enabled: true,
 };
 /**
- * Генерирует текст комментария
+ * Generates comment text
  *
- * @param tagName Тэг компонента
- * @param filePath Путь к файлу компонента
+ * @param tagName Component tag
+ * @param filePath Component file path
  */
 var generateComment = function (tagName, filePath) {
     var comment = '';
     if (tagName)
-        comment += "[tag: <" + tagName + ">]";
+        comment += "<" + tagName + ">";
     if (filePath)
-        comment += "[file: \"" + filePath + "\"]";
+        comment += "(source: \"" + filePath + "\")";
     return comment;
 };
 /**
- * Установка плагина
+ * Plugin installation
  *
  * @param Vue
  * @param options
@@ -1166,9 +1166,9 @@ function install(Vue, options) {
         mounted: function () {
             var _a, _b, _c, _d, _e;
             if (this.$el && config.enabled) {
-                /** Комментарий */
+                /** Comment */
                 var comment = generateComment(kebabCase_default()((_b = (_a = this.$vnode) === null || _a === void 0 ? void 0 : _a.componentOptions) === null || _b === void 0 ? void 0 : _b.tag), (_e = (_d = (_c = this.$vnode) === null || _c === void 0 ? void 0 : _c.componentInstance) === null || _d === void 0 ? void 0 : _d.$options) === null || _e === void 0 ? void 0 : _e.__file);
-                /** Вставка комментариев в DOM */
+                /** Insert comments in the DOM */
                 if (comment) {
                     this.$$COMMENT = {
                         START: document.createComment(" " + comment + " "),
@@ -1180,7 +1180,7 @@ function install(Vue, options) {
             }
         },
         beforeDestroy: function () {
-            /** Удаление комментариев */
+            /** Removing comments */
             if (config.enabled && this.$$COMMENT) {
                 this.$$COMMENT.START.remove();
                 this.$$COMMENT.END.remove();
