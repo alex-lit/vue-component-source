@@ -11,18 +11,38 @@ const defaults = {
 };
 
 /**
- * Generates comment text
+ * Generates commens
  *
- * @param tagName Component tag
- * @param filePath Component file path
+ * @example
+ * generateComment('CompA', 'src/components/comp-a.vue') =>
+ * {
+ *   startComment: '<comp-a src="src/components/comp-a.vue">'
+ *   endComment: '</comp-a>'
+ * }
+ *
+ * @param tagName Component tag name
+ * @param filePath Path to component source file
  */
-const generateComment = (tagName: string | undefined, filePath: string | undefined): string => {
-  let comment: string = '';
+const generateComment = (
+  tagName: string | undefined,
+  filePath: string | undefined,
+): {
+  startComment: string;
+  endComment: string;
+} => {
+  let startComment: string = '';
+  let endComment: string = '';
 
-  if (tagName) comment += `<${tagName}>`;
-  if (filePath) comment += `(source: "${filePath}")`;
+  if (tagName) {
+    startComment += `<${tagName}>`;
+    endComment += `</${tagName}>`;
+  }
 
-  return comment;
+  if (filePath) {
+    startComment = startComment.replace('>', ` src="${filePath}">`);
+  }
+
+  return { startComment, endComment };
 };
 
 /**
@@ -37,17 +57,17 @@ function install(Vue, options) {
   Vue.mixin({
     mounted() {
       if (this.$el && config.enabled) {
-        /** Comment */
-        const comment: string = generateComment(
+        /** Comments */
+        const comments = generateComment(
           kebabCase((this as any).$vnode?.componentOptions?.tag),
           (this as any).$vnode?.componentInstance?.$options?.__file,
         );
 
         /** Insert comments in the DOM */
-        if (comment) {
+        if (comments.startComment && comments.endComment) {
           this.$$COMMENT = {
-            START: document.createComment(` ${comment} `),
-            END: document.createComment(` /${comment} `),
+            START: document.createComment(` ${comments.startComment} `),
+            END: document.createComment(` ${comments.endComment} `),
           };
           this.$el.before(this.$$COMMENT.START);
           this.$el.after(this.$$COMMENT.END);

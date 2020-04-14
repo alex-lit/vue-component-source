@@ -1150,18 +1150,29 @@ var defaults = {
     enabled: true,
 };
 /**
- * Generates comment text
+ * Generates commens
  *
- * @param tagName Component tag
- * @param filePath Component file path
+ * @example
+ * generateComment('CompA', 'src/components/comp-a.vue') =>
+ * {
+ *   startComment: '<comp-a src="src/components/comp-a.vue">'
+ *   endComment: '</comp-a>'
+ * }
+ *
+ * @param tagName Component tag name
+ * @param filePath Path to component source file
  */
 var generateComment = function (tagName, filePath) {
-    var comment = '';
-    if (tagName)
-        comment += "<" + tagName + ">";
-    if (filePath)
-        comment += "(source: \"" + filePath + "\")";
-    return comment;
+    var startComment = '';
+    var endComment = '';
+    if (tagName) {
+        startComment += "<" + tagName + ">";
+        endComment += "</" + tagName + ">";
+    }
+    if (filePath) {
+        startComment = startComment.replace('>', " src=\"" + filePath + "\">");
+    }
+    return { startComment: startComment, endComment: endComment };
 };
 /**
  * Plugin installation
@@ -1175,13 +1186,13 @@ function install(Vue, options) {
         mounted: function () {
             var _a, _b, _c, _d, _e;
             if (this.$el && config.enabled) {
-                /** Comment */
-                var comment = generateComment(kebabCase_default()((_b = (_a = this.$vnode) === null || _a === void 0 ? void 0 : _a.componentOptions) === null || _b === void 0 ? void 0 : _b.tag), (_e = (_d = (_c = this.$vnode) === null || _c === void 0 ? void 0 : _c.componentInstance) === null || _d === void 0 ? void 0 : _d.$options) === null || _e === void 0 ? void 0 : _e.__file);
+                /** Comments */
+                var comments = generateComment(kebabCase_default()((_b = (_a = this.$vnode) === null || _a === void 0 ? void 0 : _a.componentOptions) === null || _b === void 0 ? void 0 : _b.tag), (_e = (_d = (_c = this.$vnode) === null || _c === void 0 ? void 0 : _c.componentInstance) === null || _d === void 0 ? void 0 : _d.$options) === null || _e === void 0 ? void 0 : _e.__file);
                 /** Insert comments in the DOM */
-                if (comment) {
+                if (comments.startComment && comments.endComment) {
                     this.$$COMMENT = {
-                        START: document.createComment(" " + comment + " "),
-                        END: document.createComment(" /" + comment + " "),
+                        START: document.createComment(" " + comments.startComment + " "),
+                        END: document.createComment(" " + comments.endComment + " "),
                     };
                     this.$el.before(this.$$COMMENT.START);
                     this.$el.after(this.$$COMMENT.END);
