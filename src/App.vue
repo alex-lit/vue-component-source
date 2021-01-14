@@ -13,9 +13,9 @@
 <template>
   <main class="app">
     <vue-github-corners
-      repo-url="//github.com/alex-lit/vue-component-source"
-      cat-color="var(--white)"
       bg-color="var(--amber--900)"
+      cat-color="var(--white)"
+      repo-url="//github.com/alex-lit/vue-component-source"
     ></vue-github-corners>
     <section class="app__container">
       <comp-a></comp-a>
@@ -29,7 +29,7 @@
   </main>
 </template>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
   .app {
     display: flex;
     min-width: 800px;

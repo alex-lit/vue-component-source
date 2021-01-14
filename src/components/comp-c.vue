@@ -2,7 +2,7 @@
   <div>Component C</div>
 </template>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
   div {
     padding: 20px;
     border: 1px solid var(--red--200);
