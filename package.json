@@ -30,7 +30,6 @@
   ],
   "main": "./dist/vue-component-source.common.js",
   "files": [
-    "src/components/vue-component-source",
     "dist"
   ],
   "scripts": {
