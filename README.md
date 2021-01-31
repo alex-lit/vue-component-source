@@ -2,6 +2,8 @@
 
 Vue mixin which comment components tag and source path in DOM (in dev tools)
 
+[DEMO](https://alex-lit.github.io/vue-component-source/)
+
 ![banner](https://raw.githubusercontent.com/alex-lit/vue-component-source/master/public/screenshot.png)
 
 ## Installation
