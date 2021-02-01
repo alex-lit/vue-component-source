@@ -1,3 +1,5 @@
+## [1.1.2](https://github.com/alex-lit/vue-component-source/compare/v1.1.1...v1.1.2) (2021-02-01)
+
 ## [1.1.1](https://github.com/alex-lit/vue-component-source/compare/v1.0.1...v1.1.1) (2021-01-14)
 
 ### Features
