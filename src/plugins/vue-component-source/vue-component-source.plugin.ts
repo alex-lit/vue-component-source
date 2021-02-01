@@ -1,24 +1,27 @@
 import kebabCase from 'lodash/kebabCase';
+import type { VueConstructor } from 'vue';
 
 /**
  * Default plugin parameters
  */
 const defaults = {
   /**
-   * Is the plugin included?
+   * Enable plugin
    */
   enabled: true,
 };
 
 /**
- * Generates commens
+ * Generate comments
  *
  * @example
+ * ```ts
  * generateComment('CompA', 'src/components/comp-a.vue') =>
  * {
  *   startComment: '<comp-a src="src/components/comp-a.vue">'
  *   endComment: '</comp-a>'
  * }
+ * ```
  *
  * @param tagName Component tag name
  * @param filePath Path to component source file
@@ -51,7 +54,7 @@ const generateComment = (
  * @param Vue
  * @param options
  */
-function install(Vue, options) {
+function install(Vue: VueConstructor, options: typeof defaults) {
   const config = { ...defaults, ...options };
 
   Vue.mixin({
@@ -69,17 +72,18 @@ function install(Vue, options) {
             START: document.createComment(` ${comments.startComment} `),
             END: document.createComment(` ${comments.endComment} `),
           };
+
           this.$el.before(this.$$COMMENT.START);
           this.$el.after(this.$$COMMENT.END);
         }
       }
     },
+
     beforeDestroy() {
       /** Removing comments */
       if (config.enabled && this.$$COMMENT) {
         this.$$COMMENT.START.remove();
         this.$$COMMENT.END.remove();
-        Vue.delete(this.$$COMMENT);
       }
     },
   });

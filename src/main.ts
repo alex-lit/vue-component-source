@@ -1,12 +1,9 @@
-import '@/plugins/css-has-pseudo';
-import '@/plugins/element-ui';
-import '@/plugins/bowser';
 import '@/plugins/vue-component-source';
-import '@/assets/styles/index.pcss';
+import '@alexlit/css-material-color-palette-variables/index.css';
 
 import Vue from 'vue';
 
-import App from './App.vue';
+import App from './app.vue';
 
 Vue.config.productionTip = false;
 
