@@ -2,7 +2,7 @@
   "name": "@alexlit/vue-component-source",
   "version": "1.1.2",
   "private": false,
-  "description": "Vue mixin which comment components tag and source path in DOM (in dev tools)",
+  "description": "Vue Component Source is a global Vue.js mixin which identifies components tag and source path by adding HTML comments. Available in DevTools.",
   "keywords": [
     "comment",
     "debugging",
@@ -53,6 +53,7 @@
     "@types/lodash": "^4.14.168",
     "@vue/cli-plugin-typescript": "^4.5.11",
     "@vue/cli-service": "^4.5.11",
+    "cross-env": "^7.0.3",
     "lodash": "^4.17.20",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.1",
