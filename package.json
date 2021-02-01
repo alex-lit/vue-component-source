@@ -4,12 +4,14 @@
   "private": false,
   "description": "Vue mixin which comment components tag and source path in DOM (in dev tools)",
   "keywords": [
-    "vue",
-    "devtools",
     "comment",
-    "source",
+    "debugging",
+    "development",
+    "devtools",
     "helper",
-    "mixin"
+    "mixin",
+    "source",
+    "vue"
   ],
   "homepage": "https://github.com/alex-lit/vue-component-source#readme",
   "bugs": {
