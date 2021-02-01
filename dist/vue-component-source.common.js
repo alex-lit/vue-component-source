@@ -111,7 +111,7 @@ module.exports = /******/ (function (modules) {
   /******/
   /******/
   /******/ /******/ return __webpack_require__(
-    (__webpack_require__.s = 'fae3'),
+    (__webpack_require__.s = 'fb15'),
   );
   /******/
 })(
@@ -656,12 +656,6 @@ module.exports = /******/ (function (modules) {
       /***/
     },
 
-    /***/ '8bbf': /***/ function (module, exports) {
-      module.exports = require('vue');
-
-      /***/
-    },
-
     /***/ '9e69': /***/ function (module, exports, __webpack_require__) {
       var root = __webpack_require__('2b3e');
 
@@ -1157,7 +1151,7 @@ module.exports = /******/ (function (modules) {
       /***/
     },
 
-    /***/ fae3: /***/ function (
+    /***/ fb15: /***/ function (
       module,
       __webpack_exports__,
       __webpack_require__,
@@ -1192,14 +1186,6 @@ module.exports = /******/ (function (modules) {
 
       // Indicate to webpack that this file can be concatenated
       /* harmony default export */ var setPublicPath = null;
-
-      // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-      var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(
-        '8bbf',
-      );
-      var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/ __webpack_require__.n(
-        external_commonjs_vue_commonjs2_vue_root_Vue_,
-      );
 
       // CONCATENATED MODULE: ./node_modules/tslib/tslib.es6.js
       /*! *****************************************************************************
@@ -1760,16 +1746,11 @@ PERFORMANCE OF THIS SOFTWARE.
         defaults: defaults,
       };
 
-      // CONCATENATED MODULE: ./src/plugins/vue-component-source/index.ts
+      // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
-      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(
-        vue_component_source_plugin,
-        {
-          enabled: true,
-        },
-      );
-
-      // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
+      /* harmony default export */ var entry_lib = (__webpack_exports__[
+        'default'
+      ] = vue_component_source_plugin);
 
       /***/
     },
