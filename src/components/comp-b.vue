@@ -4,10 +4,10 @@
 
 <style lang="scss" scoped>
   div {
-    padding: 20px;
-    border: 1px solid var(--green--200);
     background-color: var(--green--100);
+    border: 1px solid var(--green--200);
     border-radius: 4px;
     box-shadow: var(--box-shadow--active);
+    padding: 20px;
   }
 </style>

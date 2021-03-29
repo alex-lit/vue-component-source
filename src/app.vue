@@ -4,8 +4,11 @@
 
   import { CompA, CompB, CompC } from '@/components';
 
+  /**
+   *
+   */
   @Component<App>({
-    components: { VueGithubCorners, CompA, CompB, CompC },
+    components: { CompA, CompB, CompC, VueGithubCorners },
   })
   export default class App extends Vue {}
 </script>
@@ -32,20 +35,20 @@
 <style lang="scss">
   * {
     box-sizing: border-box;
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
 </style>
 
 <style lang="scss" scoped>
   .app {
-    display: flex;
-    min-width: 800px;
-    min-height: 100vh;
     align-items: center;
-    justify-content: center;
-    padding: 40px;
     background-color: var(--gray--900);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 800px;
+    padding: 40px;
   }
 
   .app__container {
