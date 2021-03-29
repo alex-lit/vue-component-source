@@ -1,16 +1,16 @@
 (function (e) {
   function t(t) {
     for (
-      var o, i, u = t[0], a = t[1], l = t[2], p = 0, f = [];
-      p < u.length;
-      p++
+      var o, i, u = t[0], a = t[1], l = t[2], f = 0, p = [];
+      f < u.length;
+      f++
     )
-      (i = u[p]),
-        Object.prototype.hasOwnProperty.call(r, i) && r[i] && f.push(r[i][0]),
+      (i = u[f]),
+        Object.prototype.hasOwnProperty.call(r, i) && r[i] && p.push(r[i][0]),
         (r[i] = 0);
     for (o in a) Object.prototype.hasOwnProperty.call(a, o) && (e[o] = a[o]);
     s && s(t);
-    while (f.length) f.shift()();
+    while (p.length) p.shift()();
     return c.push.apply(c, l || []), n();
   }
   function n() {
@@ -86,28 +86,23 @@
   0: function (e, t, n) {
     e.exports = n('cd49');
   },
-  '1abc': function (e, t, n) {
+  '1a78': function (e, t, n) {
     'use strict';
-    n('dd62');
+    n('e6fc');
+  },
+  '29ee': function (e, t, n) {
+    'use strict';
+    n('61ef');
   },
   '437c': function (e, t, n) {},
-  5245: function (e, t, n) {
+  '4dba': function (e, t, n) {
     'use strict';
-    n('e2ba');
+    n('f121');
   },
+  '61ef': function (e, t, n) {},
   6294: function (e, t, n) {
     'use strict';
     n('437c');
-  },
-  '91c9': function (e, t, n) {},
-  '95d7': function (e, t, n) {
-    'use strict';
-    n('91c9');
-  },
-  b876: function (e, t, n) {},
-  ca1d: function (e, t, n) {
-    'use strict';
-    n('b876');
   },
   cd49: function (e, t, n) {
     'use strict';
@@ -116,19 +111,24 @@
       r = n('9ab4'),
       c = n('375a'),
       i = n.n(c),
-      u = { enabled: !0 },
-      a = function (e, t) {
-        var n = '',
-          o = '';
-        return (
-          e && ((n += '<' + e + '>'), (o += '</' + e + '>')),
-          t && (n = n.replace('>', ' src="' + t + '">')),
-          { startComment: n, endComment: o }
-        );
-      };
+      u = { enabled: !0 };
+    function a(e, t) {
+      var n = '',
+        o = '';
+      return (
+        e && ((n += '<' + e + '>'), (o += '</' + e + '>')),
+        t && (n = n.replace('>', ' src="' + t + '">')),
+        { endComment: o, startComment: n }
+      );
+    }
     function l(e, t) {
       var n = Object(r['a'])(Object(r['a'])({}, u), t);
       e.mixin({
+        beforeDestroy: function () {
+          n.enabled &&
+            this.$$COMMENT &&
+            (this.$$COMMENT.START.remove(), this.$$COMMENT.END.remove());
+        },
         mounted: function () {
           var e, t, o, r, c;
           if (this.$el && n.enabled) {
@@ -157,24 +157,19 @@
             u.startComment &&
               u.endComment &&
               ((this.$$COMMENT = {
-                START: document.createComment(' ' + u.startComment + ' '),
                 END: document.createComment(' ' + u.endComment + ' '),
+                START: document.createComment(' ' + u.startComment + ' '),
               }),
               this.$el.before(this.$$COMMENT.START),
               this.$el.after(this.$$COMMENT.END));
           }
         },
-        beforeDestroy: function () {
-          n.enabled &&
-            this.$$COMMENT &&
-            (this.$$COMMENT.START.remove(), this.$$COMMENT.END.remove());
-        },
       });
     }
-    var s = { install: l, defaults: u };
+    var s = { defaults: u, install: l };
     o['a'].use(s, { enabled: !0 });
     n('79f9');
-    var p = function () {
+    var f = function () {
         var e = this,
           t = e.$createElement,
           n = e._self._c || t;
@@ -209,19 +204,19 @@
           1,
         );
       },
-      f = [],
+      p = [],
       d = n('1b40'),
-      b = n('ad33'),
-      v = function () {
+      v = n('ad33'),
+      m = function () {
         var e = this,
           t = e.$createElement,
           n = e._self._c || t;
         return n('div', [e._v('Component A')]);
       },
-      m = [],
-      h = (n('5245'), n('2877')),
+      b = [],
+      h = (n('d47d'), n('2877')),
       C = {},
-      O = Object(h['a'])(C, v, m, !1, null, '47adf3e0', null),
+      O = Object(h['a'])(C, m, b, !1, null, '6c678c28', null),
       _ = O.exports,
       $ = function () {
         var e = this,
@@ -230,8 +225,8 @@
         return n('div', [e._v('Component B')]);
       },
       y = [],
-      j = (n('ca1d'), {}),
-      g = Object(h['a'])(j, $, y, !1, null, '3134103c', null),
+      j = (n('29ee'), {}),
+      g = Object(h['a'])(j, $, y, !1, null, '6adbbfee', null),
       M = g.exports,
       T = function () {
         var e = this,
@@ -240,8 +235,8 @@
         return n('div', [e._v('Component C')]);
       },
       E = [],
-      w = (n('95d7'), {}),
-      x = Object(h['a'])(w, T, E, !1, null, '43b8b43e', null),
+      w = (n('1a78'), {}),
+      x = Object(h['a'])(w, T, E, !1, null, '54ade0a0', null),
       N = x.exports,
       P = (function (e) {
         function t() {
@@ -253,10 +248,10 @@
             [
               Object(d['a'])({
                 components: {
-                  VueGithubCorners: b['VueGithubCorners'],
                   CompA: _,
                   CompB: M,
                   CompC: N,
+                  VueGithubCorners: v['VueGithubCorners'],
                 },
               }),
             ],
@@ -269,8 +264,8 @@
       A = S,
       D =
         (n('6294'),
-        n('1abc'),
-        Object(h['a'])(A, p, f, !1, null, '17768cdc', null)),
+        n('4dba'),
+        Object(h['a'])(A, f, p, !1, null, '7d21fedc', null)),
       k = D.exports;
     (o['a'].config.productionTip = !1),
       new o['a']({
@@ -279,7 +274,12 @@
         },
       }).$mount('#app');
   },
-  dd62: function (e, t, n) {},
-  e2ba: function (e, t, n) {},
+  d47d: function (e, t, n) {
+    'use strict';
+    n('f0e0');
+  },
+  e6fc: function (e, t, n) {},
+  f0e0: function (e, t, n) {},
+  f121: function (e, t, n) {},
 });
-//# sourceMappingURL=app.a6d58925.js.map
+//# sourceMappingURL=app.e1820dc2.js.map

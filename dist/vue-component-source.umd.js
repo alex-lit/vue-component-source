@@ -1693,7 +1693,7 @@ PERFORMANCE OF THIS SOFTWARE.
          * @param tagName Component tag name
          * @param filePath Path to component source file
          */
-        var generateComment = function (tagName, filePath) {
+        function generateComment(tagName, filePath) {
           var startComment = '';
           var endComment = '';
           if (tagName) {
@@ -1706,21 +1706,26 @@ PERFORMANCE OF THIS SOFTWARE.
               ' src="' + filePath + '">',
             );
           }
-          return { startComment: startComment, endComment: endComment };
-        };
+          return { endComment: endComment, startComment: startComment };
+        }
         /**
          * Plugin installation
          *
-         * @param Vue
+         * @param vue
          * @param options
          */
-        function install(Vue, options) {
+        function install(vue, options) {
           var config = __assign(__assign({}, defaults), options);
-          Vue.mixin({
+          vue.mixin({
+            beforeDestroy: function () {
+              if (config.enabled && this.$$COMMENT) {
+                this.$$COMMENT.START.remove();
+                this.$$COMMENT.END.remove();
+              }
+            },
             mounted: function () {
               var _a, _b, _c, _d, _e;
               if (this.$el && config.enabled) {
-                /** Comments */
                 var comments = generateComment(
                   kebabCase_default()(
                     (_b =
@@ -1740,14 +1745,13 @@ PERFORMANCE OF THIS SOFTWARE.
                     ? void 0
                     : _e.__file,
                 );
-                /** Insert comments in the DOM */
                 if (comments.startComment && comments.endComment) {
                   this.$$COMMENT = {
-                    START: document.createComment(
-                      ' ' + comments.startComment + ' ',
-                    ),
                     END: document.createComment(
                       ' ' + comments.endComment + ' ',
+                    ),
+                    START: document.createComment(
+                      ' ' + comments.startComment + ' ',
                     ),
                   };
                   this.$el.before(this.$$COMMENT.START);
@@ -1755,18 +1759,11 @@ PERFORMANCE OF THIS SOFTWARE.
                 }
               }
             },
-            beforeDestroy: function () {
-              /** Removing comments */
-              if (config.enabled && this.$$COMMENT) {
-                this.$$COMMENT.START.remove();
-                this.$$COMMENT.END.remove();
-              }
-            },
           });
         }
         /* harmony default export */ var vue_component_source_plugin = {
-          install: install,
           defaults: defaults,
+          install: install,
         };
 
         // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
